@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "dev": "nodemon server"
+    "dev": "nodemon web_server"
   },
-  "author": "Dave Gray",
+  "author": "Kongarasu Lakshmanasamy",
   "license": "ISC",
   "dependencies": {
     "date-fns": "^2.23.0",
