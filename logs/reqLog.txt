@@ -8,3 +8,5 @@
 20240725	13:38:02	d33db18d-6635-47bf-81ee-415056629a0e	GET	undefined	/
 20240725	13:38:03	5883225d-d101-4773-b2ec-34680e3591c7	GET	undefined	/
 20240725	13:38:31	aebe0ca1-fb8b-4c40-be72-de0a5ecfb0b8	GET	undefined	/new-page.html
+20240725	14:46:38	a020660d-9f09-47bd-89f7-ce91df2888fa	GET	undefined	/new-page.html
+20240725	14:46:39	4c98ce1b-1cc7-4c16-9708-ee3242ca06dd	GET	undefined	/favicon.ico

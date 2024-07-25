@@ -1,12 +1,16 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const cors = require('cors'); //CORS (Cross-Origin Resource Sharing)
 const logEvents = require('./Middleware/logEvents.js')
 const PORT = process.env.PORT || 3500; // port
 
+
+// Enable CORS
+app.use(cors());
 // Middleware - Buildin
-app.use(express.urlencoded({extended:false}))
 app.use(express.json());
+app.use(express.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname,'./public')));
 
 // custum Middleware
