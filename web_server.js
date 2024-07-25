@@ -1,12 +1,21 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const logEvents = require('./Middleware/logEvents.js')
 const PORT = process.env.PORT || 3500; // port
 
+// Middleware - Buildin
 app.use(express.urlencoded({extended:false}))
 app.use(express.json());
-
 app.use(express.static(path.join(__dirname,'./public')));
+
+// custum Middleware
+app.use((req,res,next)=>{
+    logEvents(`${req.method}\t${req.headers.origin}\t${req.url}`,'reqLog.txt')
+    console.log(`${req.method} ${req.path}`)
+    next()
+})
+
 // Serve the root file
 app.get(/^\/$|\/index(.html)?/, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html')); // sending index.html as home.
