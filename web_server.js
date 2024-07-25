@@ -3,6 +3,10 @@ const app = express();
 const path = require('path');
 const PORT = process.env.PORT || 3500; // port
 
+app.use(express.urlencoded({extended:false}))
+app.use(express.json());
+
+app.use(express.static(path.join(__dirname,'./public')));
 // Serve the root file
 app.get(/^\/$|\/index(.html)?/, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html')); // sending index.html as home.
@@ -26,7 +30,7 @@ app.get('/hello(.html)?', (req, res, next) => {
     res.send("hi hello konlak");
 });
 
-// Serve 404.html for any other routes 
+// Serve 404.html for any other routes   
 app.get('/*', (req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'views', '404.html')); // serving 404.html for any unmatched routes
 });
