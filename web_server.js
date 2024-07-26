@@ -2,23 +2,34 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cors = require('cors'); //CORS (Cross-Origin Resource Sharing)
-const logEvents = require('./Middleware/logEvents.js')
+const {logger}= require('./Middleware/logEvents.js');
 const PORT = process.env.PORT || 3500; // port
+const errorHandler = require('./Middleware/errorHandler.js');
 
 
 // Enable CORS
-app.use(cors());
+
+const whitelist = ['https://www.yoursite.com','http://127.0.0.1:5500','http://localhost:3500',]
+const corsOptions = {
+    origin:(origin,callback)=>{
+        if(whitelist.indexOf(origin) !== -1 || !origin){
+            callback(null,true)
+        }else{
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    optionsSuccessStatus:200
+}
+app.use(cors(corsOptions));
+
+
 // Middleware - Buildin
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname,'./public')));
 
 // custum Middleware
-app.use((req,res,next)=>{
-    logEvents(`${req.method}\t${req.headers.origin}\t${req.url}`,'reqLog.txt')
-    console.log(`${req.method} ${req.path}`)
-    next()
-})
+app.use(logger)
 
 // Serve the root file
 app.get(/^\/$|\/index(.html)?/, (req, res) => {
@@ -48,6 +59,6 @@ app.get('/*', (req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'views', '404.html')); // serving 404.html for any unmatched routes
 });
 
-
+app.use(errorHandler)
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

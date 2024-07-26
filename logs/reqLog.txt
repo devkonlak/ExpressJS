@@ -10,3 +10,9 @@
 20240725	13:38:31	aebe0ca1-fb8b-4c40-be72-de0a5ecfb0b8	GET	undefined	/new-page.html
 20240725	14:46:38	a020660d-9f09-47bd-89f7-ce91df2888fa	GET	undefined	/new-page.html
 20240725	14:46:39	4c98ce1b-1cc7-4c16-9708-ee3242ca06dd	GET	undefined	/favicon.ico
+20240726	14:15:29	aa6fb66d-ebad-4116-9a6a-a6dc3030c206	GET	undefined	/
+20240726	14:15:29	3140d429-a596-48e4-a79a-08e431e29956	GET	undefined	/favicon.ico
+20240726	16:28:59	17620e54-9497-4fe8-8ad1-59a0dae1882b	GET	https://www.google.com	/
+20240726	16:36:08	c92a5974-fa54-47b3-ac33-ffc8bcc75694	GET	https://www.google.com	/
+20240726	16:38:53	824cfc65-c633-4ea5-9bf9-11f31ef4ec37	GET	https://www.google.com	/
+20240726	17:44:48	636168c6-5317-49ca-a5a2-1fa55dc5f15e	GET	undefined	/
