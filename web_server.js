@@ -28,23 +28,12 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname,'./public')));
 
+app.use('/',require('./routes/root'))
+app.use('/subdir',require('./routes/subdir'))
+
+
 // custum Middleware
 app.use(logger)
-
-// Serve the root file
-app.get(/^\/$|\/index(.html)?/, (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'index.html')); // sending index.html as home.
-});
-
-// Serve the new-page.html
-app.get('/new-page(.html)?', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'new-page.html')); // sending new-page.html as '/new-page.html'.
-});
-
-// Redirect old-page.html to new-page.html with 301 status code
-app.get('/old-page(.html)?', (req, res) => {
-    res.redirect(301, '/new-page.html'); // sending new-page instead of old-page with 301 code
-});
 
 // Route for hello.html
 app.get('/hello(.html)?', (req, res, next) => {
